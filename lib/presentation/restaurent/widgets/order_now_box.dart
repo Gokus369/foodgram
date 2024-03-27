@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:foodapp/core/colors.dart';
 
@@ -30,18 +29,15 @@ class OrderNwBox extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 10,
+          bottom: 20,
           left: 14,
           child: ElevatedButton(
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: kWhite),
+              style: ElevatedButton.styleFrom(backgroundColor: kWhite),
               onPressed: () {},
               child: const Text(
                 'ORDER NOW',
                 style: TextStyle(
-                    color: kBlack,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold),
+                    color: kBlack, fontSize: 14, fontWeight: FontWeight.bold),
               )),
         )
       ],

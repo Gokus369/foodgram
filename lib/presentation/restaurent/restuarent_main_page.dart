@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp/core/constants.dart';
+import 'package:foodapp/presentation/all_purpose_widgets/main_titile.dart';
 import 'package:foodapp/presentation/restaurent/widgets/order_now_box.dart';
 import 'package:foodapp/presentation/restaurent/widgets/surprise.dart';
+import 'package:foodapp/presentation/restaurent/widgets/top_rated_card.dart';
+
+import 'widgets/restarent_cards.dart';
 
 class RestaurentMainPage extends StatelessWidget {
   const RestaurentMainPage({super.key});
@@ -31,6 +35,7 @@ class RestaurentMainPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CupertinoSearchTextField(
                 placeholder: 'Search,Order,Enjoy,Repeat!',
@@ -45,7 +50,44 @@ class RestaurentMainPage extends StatelessWidget {
               kHeight20,
               const SurpriseWidget(),
               kHeight20,
-              const OrderNwBox()
+              LimitedBox(
+                maxHeight: 200,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) {
+                    return const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: OrderNwBox(),
+                    );
+                  },
+                ),
+              ),
+              kHeight20,
+              const MainTitle(title: 'Top Rated near you'),
+              kHeight20,
+              LimitedBox(
+                maxHeight: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (BuildContext context, int index) {
+                    return const TopRatedCard();
+                  },
+                ),
+              ),
+              kHeight20,
+              const MainTitle(title: 'Restaurents'),
+              kHeight20,
+              ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (BuildContext context, int index) {
+                  return Expanded(child: RestaurentCards());
+                },
+              ),
             ],
           ),
         ),
